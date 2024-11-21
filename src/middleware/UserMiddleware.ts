@@ -10,7 +10,7 @@ class UserMiddleware{
 
         if(!token){
             return res.status(401).json({
-                message: "Nenhum token autorizado."
+                message: "Nenhum token foi autorizado."
             });
         }
         next();
