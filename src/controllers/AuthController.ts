@@ -34,7 +34,7 @@ class AuthController{
             if(!email || !passworld){
                 return res.json({
                     status: 400,
-                    message: "Email ou senha não encontrados."
+                    message: "Esse email ou senha não foram encontrados."
                 });
             }
 
@@ -45,9 +45,10 @@ class AuthController{
             });
 
             if(!user){
+                
                 return res.json({
                     status: 401,
-                    message: "Email não existe."
+                    message: "Esse email não existe. "
                 });
             }
 
@@ -60,17 +61,19 @@ class AuthController{
                 });
             }
 
+            
             const token = await generateJWToken(user);
             return res.json({
                 status: 200,
                 user:{
                     token
                 },
-                message: "Autenticação bem sucedida!"
+                message: "Autenticação foi bem sucedida!"
             });
         }
 
         catch(error) {
+            
             console.log(error);
             res.json({
                 status: 500,
